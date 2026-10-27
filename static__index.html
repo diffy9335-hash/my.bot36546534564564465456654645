@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#070b12">
+  <meta name="description" content="RDG — Rates Diffy Game — прогнозы на футбол за виртуальные монеты">
+  <title>RDG</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="/static/style.css?v=32">
+</head>
+<body>
+  <main>
+    <header class="topbar">
+      <div class="topbar-spacer"></div>
+      <div class="balance-panel" id="balance"><div class="balance-shell"><span class="balance-label">Баланс</span><strong class="balance-value">—</strong></div></div>
+      <div class="menu-wrap">
+        <button class="profile-trigger" id="profileMenuButton" aria-label="Меню профиля" aria-expanded="false">
+          <span data-own-avatar class="header-avatar"><img hidden alt="Мой аватар"><span id="profileMenuInitials">RD</span></span>
+        </button>
+        <div class="profile-menu hidden" id="profileMenu">
+          <button data-menu-view="profile">Профиль</button>
+          <button data-menu-view="feed">Лента</button>
+          <button data-menu-view="chat">Чат</button>
+          <button data-menu-view="notifications">Уведомления</button>
+          <button data-menu-view="subscriptions">Подписки</button>
+          <button data-menu-view="referrals">Приглашения</button>
+          <button data-menu-view="help">Помощь</button>
+          <button data-menu-view="admin" id="adminMenuTab" hidden>Админ</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="hero hero-classic">
+      <div class="hero-inner">
+        <span class="pill">RDG · CLASSIC</span>
+        <h1>Rates Diffy Game</h1>
+        <p>Собирай купоны, следи за матчами и поднимайся в топе сезона.</p>
+        <button class="bonus" id="bonus">Забрать 200 монет</button>
+      </div>
+    </div>
+
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">RDG</span>
+        <h3 id="viewTitle">Ближайшие матчи</h3>
+      </div>
+      <button id="reload" aria-label="Обновить матчи" title="Обновить">Обновить</button>
+    </div>
+
+    <div id="note" role="status" aria-live="polite"></div>
+    <div id="filters" class="filter-row" hidden></div>
+    <section id="content"></section>
+
+    <button id="couponFloat" class="coupon-float" hidden aria-label="Открыть выбранные прогнозы">
+      <span id="floatCount">1 событие</span><strong id="floatOdds">1.00</strong><span>Продолжить</span>
+    </button>
+    <div id="couponOverlay" class="coupon-overlay" hidden>
+      <div class="coupon-scrim" id="couponScrim"></div>
+      <section id="betbar" class="coupon-sheet" role="dialog" aria-modal="true" aria-labelledby="couponHeading">
+        <div class="sheet-grab"></div>
+        <div class="sheet-title"><div><small>RDG · ПРОГНОЗ</small><h3 id="couponHeading">Одиночный прогноз</h3></div><button id="closeCoupon" aria-label="Закрыть купон">Закрыть</button></div>
+        <div class="bet-summary"><span id="selectionCount"></span><div class="total"><small>Общий коэффициент</small><b id="totalOdd"></b></div></div>
+        <div id="couponLines" class="coupon-lines"></div>
+        <div class="betcontrols"><label>Сумма виртуальных монет<input id="stake" type="number" inputmode="numeric" min="10" max="100000" step="10" value="100"></label></div>
+        <div class="possible" id="potential"></div>
+        <button id="place" class="confirm-slip">Подтвердить прогноз</button>
+        <small class="sheet-footnote">Прогноз нельзя отменить после подтверждения.</small>
+      </section>
+    </div>
+
+    <footer>RDG · Rates Diffy Game</footer>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Разделы">
+    <button data-view="matches" class="active">Матчи</button>
+    <button data-view="live">Live</button>
+    <button data-view="slips">История</button>
+    <button data-view="ranking">Топ</button>
+  </nav>
+
+  <script src="/static/app.js?v=32"></script>
+</body>
+</html>
